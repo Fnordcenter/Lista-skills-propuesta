@@ -1,0 +1,189 @@
+Fase 1: Planeación (Planning)
+Requirement-Elicitation.md
+
+Estándar: ISO/IEC/IEEE 29148.
+
+Descripción: Analiza el prompt inicial del usuario para extraer requisitos funcionales (qué debe hacer) y no funcionales (rendimiento, seguridad). Crea la base de la Especificación de Requisitos de Software para que el agente sepa exactamente qué meta cumplir.
+
+Architecture-Viewpoint-Crafter.md
+
+Estándar: ISO/IEC/IEEE 42010 (Descripción de Arquitectura).
+Descripción: Genera la propuesta arquitectónica basándose en "Vistas" y "Puntos de Vista" (Ej. vista lógica, vista física de despliegue). Selecciona los paradigmas (MVC, Microservicios, etc.) según las necesidades detectadas en el prompt.
+
+SOLID-Engine.md
+
+Estándar: Principios SOLID.
+
+Descripción: Crea el árbol de directorios y la estructura base de carpetas. Asegura que la separación de responsabilidades (Single Responsibility) y la inyección de dependencias (Dependency Inversion) estén preparadas desde la raíz del proyecto.
+
+SDD-Documenter.md
+
+Estándar: IEEE 1016 (Descripciones de Diseño de Software).
+
+Descripción: Toma la salida de los skills anteriores y redacta un Documento de Diseño de Software (SDD). Este skill deja por escrito por qué se tomaron ciertas decisiones arquitectónicas antes de escribir una sola línea de código.
+
+Risk-Assessment-Analyzer
+
+Estándar: ISO 31000 (Gestión de Riesgos) / IEEE 16326.
+
+Descripción: Antes de diseñar, evalúa el prompt del usuario en busca de riesgos técnicos (ej. dependencia a APIs de terceros) o de seguridad. Genera una matriz de riesgos y propone mitigaciones tempranas en la arquitectura.
+
+Effort-Estimation-Engine.md
+
+Estándar: COCOMO II / ISO/IEC 14143.
+
+Descripción: Estima la complejidad del proyecto. Calcula cuántos pasos, tokens o ciclos de iteración tomará construir la solución, ayudando al orquestador a gestionar la memoria del agente y los costos operativos.
+Fase 2: Contexto (Preparación y Diseño)
+Dependency-Guardian.md
+
+Estándar: OWASP Dependency-Check.
+
+Descripción: Busca, selecciona y descarga los paquetes y librerías necesarias. Filtra automáticamente cualquier dependencia obsoleta, no verificada o que tenga CVEs (Vulnerabilidades Comunes) reportadas.
+
+API-Contract-Designer.md
+Estándar: OpenAPI Specification.
+
+Descripción: Define todos los endpoints, métodos (GET, POST), esquemas de petición y respuesta. Genera el archivo swagger.yaml o openapi.json para garantizar que la comunicación interna/externa esté estandarizada antes de implementarse.
+
+Secure-Schema-Modeler.md
+
+Estándar: OWASP Data Protection.
+
+Descripción: Diseña la base de datos (relacional o NoSQL). Crea los scripts de migración iniciales y establece reglas para encriptar datos en reposo (contraseñas, PII) asegurando que no haya conexiones "hardcodeadas" en el diseño.
+Traceability-Matrix-Linker.md
+Estándar: ISO/IEC/IEEE 29148.
+Descripción: Vincula cada endpoint de la API y cada tabla de la base de datos con los requisitos extraídos en la Fase 1. Si el usuario pidió "login seguro", este skill verifica que exista una tabla de usuarios y un endpoint de autenticación asociados a ese requisito.
+
+State-Machine-Designer.md
+
+Estándar: UML / ISO/IEC 19505.
+
+Descripción: Para lógicas de negocio complejas (ej. carritos de compra o flujos de aprobación), diseña Máquinas de Estado Finito. Esto evita bugs lógicos severos (como que un pedido se marque como "enviado" antes de ser "pagado").
+Fase 3: Implementación (Coding)
+
+Secure-Coder-Core.md
+
+Estándar: OWASP Top 10.
+
+Descripción: Es el motor principal de escritura de código. Se encarga de sanitizar inputs (previniendo Inyecciones SQL/XSS), implementar el manejo seguro de sesiones y cargar variables de entorno para los secretos del sistema.
+
+Architectural-Security-Auditor.md
+
+Estándar: IEEE Center for Secure Design (CSD).
+
+Descripción: Revisa el código en tiempo real para buscar fallas de diseño de seguridad (no solo bugs). Verifica que la autenticación ocurra donde debe y que los límites de confianza (Trust Boundaries) entre componentes estén bien definidos.
+
+UI-Crafter.md
+
+Estándar: WCAG 2.1 (Web Content Accessibility Guidelines).
+
+Descripción: Escribe el código del Frontend (HTML/CSS/React/etc.). Asegura que haya contrastes de color correctos, navegación por teclado, soporte para lectores de pantalla (ARIA tags) y un diseño responsivo/moderno.
+
+SQA-Realtime-Monitor.md
+
+Estándar: IEEE 730 (Aseguramiento de Calidad de Software).
+Descripción: Actúa como un linter avanzado o "auditor de calidad en la sombra". Mide la complejidad ciclomática del código, la duplicación y el nivel de mantenibilidad, obligando al agente a refactorizar si el código se vuelve desordenado.
+
+Refactor-And-Clean-Engine.md
+
+Estándar: Clean Code / SOLID.
+
+Descripción: Es invocado si el SQA-Realtime-Monitor o el Architectural-Security-Auditor encuentran problemas. Su única función es reescribir bloques de código defectuosos sin romper la lógica de negocio.
+
+Error-Handling-Standardizer.md
+
+Estándar: RFC 7807 (Problem Details for HTTP APIs).
+
+Descripción: Estandariza la forma en que el código lanza y captura excepciones. Evita que el backend devuelva errores crudos (stack traces) al usuario, envolviéndolos en respuestas HTTP seguras, legibles y uniformes.
+
+Concurrency-Safe-Coder.md
+
+Estándar: POSIX / Buenas prácticas de Threading.
+
+Descripción: Especializado en manejar operaciones asíncronas, hilos (threads) y bases de datos transaccionales. Previene condiciones de carrera (Race Conditions) y bloqueos (Deadlocks) asegurando el principio de atomicidad (ACID).
+
+Internationalization-I18n-Setup.md
+Estándar: W3C I18n / Unicode.
+
+Descripción: Asegura que todo texto en la UI y formatos de fecha/moneda no estén incrustados (hardcoded). Prepara diccionarios de traducción e inyecta la lógica para soportar múltiples idiomas desde el día 1.
+Fase 4: Verificación (Testing)
+
+Master-Test-Planner.md
+
+Estándar: ISO/IEC/IEEE 29119 (Procesos de Pruebas).
+
+Descripción: Diseña la estrategia de pruebas. Decide qué componentes necesitan pruebas unitarias, cuáles integración y cuáles End-to-End (E2E) basándose en la criticidad de los requisitos.
+Unit-Integrator-Tester.md
+Estándar: IEEE 1008 (Pruebas Unitarias) / ISTQB.
+
+Descripción: Escribe y ejecuta los scripts de prueba (usando Jest, PyTest, JUnit, etc.). Se asegura de probar tanto el "camino feliz" (happy path) como los casos límite y de error (boundary testing).
+
+Test-Incident-Reporter.md
+Estándar: ISO/IEC/IEEE 29119 (Reporte de Incidentes).
+
+Descripción: Si el Unit-Integrator-Tester falla en la terminal, este skill lee el log de errores. En lugar de solo adivinar, redacta internamente un "Reporte de Incidente" estructurado (Qué falló, dónde, bajo qué contexto de ejecución).
+
+Autonomous-Healer.md
+
+Estándar: Prácticas de Continuous Integration (CI).
+
+Descripción: Lee el Reporte de Incidente generado en el paso anterior, localiza el bug en el código fuente, aplica un parche, y vuelve a invocar las pruebas. Crea un ciclo de auto-reparación (Auto-fixing loop) hasta que la consola devuelva código de salida 0 (Éxito).
+
+DAST-Security-Scanner.md
+
+Estándar: OWASP ZAP (Conceptos de Dynamic Testing) / ISO/IEC 27034.
+
+Descripción: Análisis Dinámico. Levanta el software localmente y simula ataques automatizados (Fuzzing, inyecciones) sobre los endpoints vivos para comprobar si las defensas diseñadas realmente aguantan un ataque.
+
+Load-And-Stress-Simulator.md
+
+Estándar: ISO/IEC 25023 (Eficiencia de Rendimiento).
+
+Descripción: Escribe y ejecuta scripts (ej. estilo k6 o JMeter) para bombardear la aplicación con múltiples peticiones concurrentes. Verifica si el sistema colapsa o si responde con los tiempos exigidos en el SRS.
+
+Usability-Heuristic-Evaluator.md
+
+Estándar: Heurísticas de Nielsen.
+
+Descripción: Evalúa la UI generada sin intervención humana. Revisa si el sistema informa claramente su estado, si hay prevención de errores (botones deshabilitados cuando faltan datos) y si los mensajes de error son amigables.
+Fase 5: Despliegue (Release & Deployment)
+
+
+Configuration-Baseline-Manager.md
+
+Estándar: IEEE 828 (Gestión de la Configuración).
+
+Descripción: Gestiona el sistema de control de versiones (Git). Toma el código que ya pasó las pruebas y establece una "Línea Base" (Baseline). Asegura que no queden archivos basura temporales y verifica el estado del repositorio antes del commit.
+SemVer-Calculator.md
+
+Estándar: Semantic Versioning (SemVer 2.0.0).
+
+Descripción: Analiza los cambios realizados respecto a la versión anterior (si la hay). Determina automáticamente si el cambio requiere una versión MAJOR (cambios incompatibles), MINOR (nuevas funciones) o PATCH (corrección de bugs).
+
+Compliance-Changelog-Builder.md
+
+Estándar: Keep a Changelog / IEEE 828.
+
+Descripción: Genera o actualiza el archivo CHANGELOG.md. Este skill redacta detalladamente lo que se añadió, cambió, deprecó o arregló, cruzando la información con la Matriz de Trazabilidad (Ej. "Añadido [v1.1.0]: Endpoint de Login (Cumple Requisito SRS-04)").
+Release-Gatekeeper.md
+
+Estándar: ISO/IEC/IEEE 12207 (Proceso de Transición de Software).
+
+Descripción: Es el validador final. Revisa que el SDD (Diseño), el SRS (Requisitos), el código fuente, los tests pasados y el CHANGELOG existan y estén sincronizados. Si todo es correcto, empaqueta el release (ej. construye una imagen Docker o hace el git push final) y le notifica al usuario que el despliegue está listo.
+
+IaC-Container-Architect.md
+
+Estándar: OCI (Open Container Initiative).
+
+Descripción: Infraestructura como Código. Escribe los Dockerfile, docker-compose.yml o manifiestos de Kubernetes asegurando buenas prácticas: imágenes ligeras (Alpine), usuarios no root y volúmenes persistentes seguros.
+
+Rollback-Strategy-Planner.md
+
+Estándar: ITIL / ISO/IEC 20000 (Gestión del Servicio).
+
+Descripción: Crea el "Plan de Contingencia". Escribe scripts para revertir la base de datos (Downgrade migrations) y hacer rollback en Git si la versión recién desplegada causa un fallo crítico en el ambiente de producción.
+
+User-Manual-Synthesizer.md
+
+Estándar: ISO/IEC/IEEE 26511 (Gestión de Información de Usuarios).
+Descripción: Genera la documentación para humanos. Escribe un README.md exhaustivo, guías de instalación para otros desarrolladores, y un manual básico de uso de la aplicación, dando por finalizado todo el ciclo del software.
