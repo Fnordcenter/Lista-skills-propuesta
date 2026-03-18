@@ -1,3 +1,10 @@
+Fase 0: Preparacion de SCRUM
+Agile-Sprint-Orchestrator.md
+
+Estándar: Scrum Guide 2020 / PDCA (Plan-Do-Check-Act).
+
+Descripción: Es el "Scrum Master" del sistema. En lugar de ejecutar las Fases 1 a 5 para todo el proyecto de golpe, encierra las Fases 2, 3, 4 y 5 en un bucle (loop). Vigila la memoria y los tokens del agente, asegurando que si un Sprint termina, el sistema se reinicie limpiamente para abordar el siguiente bloque de historias de usuario sin perder el contexto de la arquitectura base.
+
 Fase 1: Planeación (Planning)
 Requirement-Elicitation.md
 
@@ -33,6 +40,16 @@ Effort-Estimation-Engine.md
 Estándar: COCOMO II / ISO/IEC 14143.
 
 Descripción: Estima la complejidad del proyecto. Calcula cuántos pasos, tokens o ciclos de iteración tomará construir la solución, ayudando al orquestador a gestionar la memoria del agente y los costos operativos.
+Product-Backlog-Groomer.md
+
+Estándar: INVEST Principles (Independent, Negotiable, Valuable, Estimable, Small, Testable).
+
+Descripción:Toma los requerimientos generales del Requirement-Elicitation y los divide en Épicas y Tareas pequeñas (User Stories). Crea y mantiene un archivo BACKLOG.md vivo, priorizando lo que da más valor al usuario en las primeras iteraciones.
+Sprint-Planner-Engine.md
+
+Estándar: Scrum Guide (Sprint Planning).
+
+Descripción: Lee el BACKLOG.md y, apoyándose en el Effort-Estimation-Engine, selecciona un subconjunto de Historias de Usuario (Sprint Backlog) que el agente puede completar razonablemente en un solo prompt/ciclo sin cortarse. Define el "Objetivo del Sprint" (Sprint Goal).
 Fase 2: Contexto (Preparación y Diseño)
 Dependency-Guardian.md
 
@@ -59,6 +76,11 @@ State-Machine-Designer.md
 Estándar: UML / ISO/IEC 19505.
 
 Descripción: Para lógicas de negocio complejas (ej. carritos de compra o flujos de aprobación), diseña Máquinas de Estado Finito. Esto evita bugs lógicos severos (como que un pedido se marque como "enviado" antes de ser "pagado").
+Definition-Of-Ready-Validator.md (DoR)
+
+Estándar: Agile Alliance DoR.
+
+Descripción: Antes de pasar a la fase de código (Fase 3), este skill verifica que las dependencias, la API y la base de datos diseñadas en la Fase 2 sean suficientes únicamente para las Historias de Usuario de este Sprint. Evita que el agente empiece a programar si hay dudas funcionales.
 Fase 3: Implementación (Coding)
 
 Secure-Coder-Core.md
@@ -106,6 +128,11 @@ Internationalization-I18n-Setup.md
 Estándar: W3C I18n / Unicode.
 
 Descripción: Asegura que todo texto en la UI y formatos de fecha/moneda no estén incrustados (hardcoded). Prepara diccionarios de traducción e inyecta la lógica para soportar múltiples idiomas desde el día 1.
+TDD-Micro-Commiter.md
+
+Estándar: Test-Driven Development / Conventional Commits.
+
+Descripción:Obliga al agente a hacer "micro-entregas". Por cada historia de usuario terminada dentro del Sprint, escribe el código, lo guarda y documenta un commit atómico. Si el agente se corta por tokens, este registro permite retomar exactamente en la última tarea completada.
 Fase 4: Verificación (Testing)
 
 Master-Test-Planner.md
@@ -146,6 +173,11 @@ Usability-Heuristic-Evaluator.md
 Estándar: Heurísticas de Nielsen.
 
 Descripción: Evalúa la UI generada sin intervención humana. Revisa si el sistema informa claramente su estado, si hay prevención de errores (botones deshabilitados cuando faltan datos) y si los mensajes de error son amigables.
+Acceptance-Criteria-Tester.md
+
+Estándar: BDD (Behavior-Driven Development) / Gherkin (Given-When-Then).
+
+Descripción: Asiste al Master-Test-Planner. Toma las historias de usuario del Sprint actual y verifica que el código generado cumpla exactamente con los Criterios de Aceptación definidos en la Fase 1. Es la "Definición de Hecho" (Definition of Done) a nivel funcional.
 Fase 5: Despliegue (Release & Deployment)
 
 
@@ -187,3 +219,8 @@ User-Manual-Synthesizer.md
 
 Estándar: ISO/IEC/IEEE 26511 (Gestión de Información de Usuarios).
 Descripción: Genera la documentación para humanos. Escribe un README.md exhaustivo, guías de instalación para otros desarrolladores, y un manual básico de uso de la aplicación, dando por finalizado todo el ciclo del software.
+Sprint-Retrospective-Analyzer.md
+
+Estándar: Agile Retrospectives.
+
+Descripción: El último paso del Sprint. Analiza los logs: ¿Hubo muchos errores capturados por el Autonomous-Healer? ¿El código de la UI es inaccesible? Documenta "Lecciones Aprendidas" en un archivo oculto .retro.md para inyectarlo en el system prompt del siguiente Sprint, logrando que el agente mejore automáticamente su propio rendimiento y evite repetir errores en la siguiente iteración.
