@@ -50,6 +50,17 @@ Sprint-Planner-Engine.md
 Estándar: Scrum Guide (Sprint Planning).
 
 Descripción: Lee el BACKLOG.md y, apoyándose en el Effort-Estimation-Engine, selecciona un subconjunto de Historias de Usuario (Sprint Backlog) que el agente puede completar razonablemente en un solo prompt/ciclo sin cortarse. Define el "Objetivo del Sprint" (Sprint Goal).
+Smart-Document-Analyzer.md
+
+Estándar: ISO/IEC/IEEE 29148 (Ingeniería de Requisitos) / NLP Information Extraction.
+
+Descripción: Recibe la ruta de una carpeta local (ej. /docs_input) y realiza un análisis inteligente de todo el texto (PDFs, Word, TXT, CSV). En lugar de solo leer por encima, extrae activamente reglas de negocio estrictas, flujos lógicos y requerimientos específicos (funcionales y no funcionales). Transforma este texto plano y desestructurado en insumos directos y borradores de Historias de Usuario para el Backlog, ahorrándole al usuario la necesidad de explicar todo en el prompt inicial.
+
+Visual-Context-Analyzer.md
+
+Estándar: BPMN 2.0 / UML / User-Centered Design (UCD).
+
+Descripción: Complementa al Smart-Document-Analyzer enfocándose exclusivamente en los archivos gráficos de la misma carpeta (diagramas de flujo, arquitecturas, wireframes, mockups o capturas de pantalla en PNG/JPG). Utiliza visión artificial (Vision) para interpretar la intención del diagrama, extrayendo reglas de negocio implícitas en los gráficos (ej. "si el usuario hace clic aquí, el diagrama indica que va a la pasarela de pago") y traduciendo esas interfaces o flujos en requerimientos precisos e Historias de Usuario estructuradas.
 Fase 2: Contexto (Preparación y Diseño)
 Dependency-Guardian.md
 
